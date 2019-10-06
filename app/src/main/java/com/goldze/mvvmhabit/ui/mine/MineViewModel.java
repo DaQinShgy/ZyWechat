@@ -1,4 +1,4 @@
-package com.goldze.mvvmhabit.ui.login;
+package com.goldze.mvvmhabit.ui.mine;
 
 import android.app.Application;
 import android.databinding.ObservableField;
@@ -24,7 +24,7 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * Created by goldze on 2017/7/17.
  */
 
-public class LoginViewModel extends BaseViewModel<DemoRepository> {
+public class MineViewModel extends BaseViewModel<DemoRepository> {
     //用户名的绑定
     public ObservableField<String> userName = new ObservableField<>("");
     //密码的绑定
@@ -39,7 +39,7 @@ public class LoginViewModel extends BaseViewModel<DemoRepository> {
         public SingleLiveEvent<Boolean> pSwitchEvent = new SingleLiveEvent<>();
     }
 
-    public LoginViewModel(@NonNull Application application, DemoRepository repository) {
+    public MineViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
         //从本地取得数据绑定到View层
         userName.set(model.getUserName());

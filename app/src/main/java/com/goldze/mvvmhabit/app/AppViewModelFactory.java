@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
-import com.goldze.mvvmhabit.ui.login.LoginViewModel;
+import com.goldze.mvvmhabit.ui.mine.MineViewModel;
 import com.goldze.mvvmhabit.ui.network.NetWorkViewModel;
 
 /**
@@ -46,8 +46,8 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(NetWorkViewModel.class)) {
             return (T) new NetWorkViewModel(mApplication, mRepository);
-        } else if (modelClass.isAssignableFrom(LoginViewModel.class)) {
-            return (T) new LoginViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(MineViewModel.class)) {
+            return (T) new MineViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
