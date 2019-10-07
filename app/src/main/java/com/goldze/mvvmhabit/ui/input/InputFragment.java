@@ -10,7 +10,6 @@ import com.goldze.mvvmhabit.BR;
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentInputBinding;
-import com.goldze.mvvmhabit.ui.form.InfoViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 

@@ -39,8 +39,5 @@ dependencies {
     implementation project(':mvvmhabit')
 //    implementation rootProject.ext.dependencies.MVVMHabit
 
-    implementation 'cn.finalteam.rxgalleryfinal:library:1.0.9'
-
-//支持以下主流图片加载器，开发者自行选择
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.linchaolong.android:imagepicker:1.5'
 }

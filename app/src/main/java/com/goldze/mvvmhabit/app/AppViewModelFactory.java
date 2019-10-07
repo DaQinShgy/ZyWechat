@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
-import com.goldze.mvvmhabit.ui.form.InfoViewModel;
+import com.goldze.mvvmhabit.ui.info.InfoViewModel;
 import com.goldze.mvvmhabit.ui.input.InputViewModel;
 import com.goldze.mvvmhabit.ui.mine.MineViewModel;
 import com.goldze.mvvmhabit.ui.network.NetWorkViewModel;

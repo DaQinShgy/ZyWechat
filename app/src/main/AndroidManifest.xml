@@ -28,14 +28,8 @@
         <activity android:name=".ui.main.DemoActivity"></activity>
         <activity android:name=".ui.tab_bar.activity.TabBarActivity"></activity>
         <activity android:name=".ui.viewpager.activity.ViewPagerActivity"></activity>
-        <activity
-            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme_Light.Test" />
-        <activity
-            android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name="com.linchaolong.android.imagepicker.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

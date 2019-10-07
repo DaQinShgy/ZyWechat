@@ -1,4 +1,4 @@
-package com.goldze.mvvmhabit.ui.form;
+package com.goldze.mvvmhabit.ui.info;
 
 import android.app.Application;
 import android.databinding.ObservableBoolean;
@@ -14,7 +14,6 @@ import com.goldze.mvvmhabit.ui.input.InputFragment;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
-import me.goldze.mvvmhabit.utils.ToastUtils;
 
 /**
  * Created by goldze on 2017/7/17.
@@ -53,6 +52,10 @@ public class InfoViewModel extends ToolbarViewModel<DemoRepository> {
         entity.setHead(model.getHead());
         entity.setName(model.getUserName());
         entity.setWxId(model.getWxId());
+    }
+
+    public void initHead(){
+
     }
 
     /**

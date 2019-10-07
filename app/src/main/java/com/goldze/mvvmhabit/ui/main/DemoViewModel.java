@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.goldze.mvvmhabit.entity.InfoEntity;
-import com.goldze.mvvmhabit.ui.form.InfoFragment;
+import com.goldze.mvvmhabit.ui.info.InfoFragment;
 import com.goldze.mvvmhabit.ui.network.NetWorkFragment;
 import com.goldze.mvvmhabit.ui.rv_multi.MultiRecycleViewFragment;
 import com.goldze.mvvmhabit.ui.tab_bar.activity.TabBarActivity;
