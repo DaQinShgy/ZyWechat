@@ -17,6 +17,7 @@ import com.goldze.mvvmhabit.BR;
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentInfoBinding;
+import com.goldze.mvvmhabit.utils.UriTool;
 import com.linchaolong.android.imagepicker.ImagePicker;
 import com.linchaolong.android.imagepicker.cropper.CropImage;
 import com.linchaolong.android.imagepicker.cropper.CropImageView;
@@ -97,7 +98,7 @@ public class InfoFragment extends BaseFragment<FragmentInfoBinding, InfoViewMode
             // 裁剪图片回调
             @Override
             public void onCropImage(Uri imageUri) {
-
+                viewModel.initHead(UriTool.getFilePathByUri(getActivity(), imageUri));
             }
 
             // 自定义裁剪配置
@@ -109,7 +110,9 @@ public class InfoFragment extends BaseFragment<FragmentInfoBinding, InfoViewMode
                         // 设置网格显示模式
                         .setGuidelines(CropImageView.Guidelines.OFF)
                         // 圆形/矩形
-                        .setCropShape(CropImageView.CropShape.RECTANGLE);
+                        .setCropShape(CropImageView.CropShape.RECTANGLE)
+                        .setRequestedSize(640, 640)
+                        .setAspectRatio(5, 5);
             }
 
             // 用户拒绝授权回调

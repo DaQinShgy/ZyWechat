@@ -15,25 +15,9 @@ import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
-/**
- * Created by goldze on 2017/7/17.
- */
-
 public class InfoViewModel extends ToolbarViewModel<DemoRepository> {
 
     public InfoEntity entity;
-
-    //封装一个界面发生改变的观察者
-    public UIChangeObservable uc;
-
-    public class UIChangeObservable {
-        //显示日期对话框
-        public ObservableBoolean showDateDialogObservable;
-
-        public UIChangeObservable() {
-            showDateDialogObservable = new ObservableBoolean(false);
-        }
-    }
 
     public InfoViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
@@ -42,7 +26,6 @@ public class InfoViewModel extends ToolbarViewModel<DemoRepository> {
     @Override
     public void onCreate() {
         super.onCreate();
-        uc = new UIChangeObservable();
         entity = new InfoEntity();
     }
 
@@ -52,10 +35,13 @@ public class InfoViewModel extends ToolbarViewModel<DemoRepository> {
         entity.setHead(model.getHead());
         entity.setName(model.getUserName());
         entity.setWxId(model.getWxId());
+        entity.notifyChange();
     }
 
-    public void initHead(){
-
+    public void initHead(String path){
+        model.saveHead(path);
+        entity.setHead(model.getHead());
+        entity.notifyChange();
     }
 
     /**

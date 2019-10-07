@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,7 +9,7 @@
             type="com.goldze.mvvmhabit.ui.mine.MineViewModel" />
     </data>
 
-    <LinearLayout
+    <LinearLayout xmlns:app="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_EDEDED"
@@ -47,12 +46,18 @@
                         android:layout_marginBottom="36dp"
                         binding:onClickCommand="@{viewModel.clickCommand}">
 
-                        <ImageView
+                        <org.raphets.roundimageview.RoundImageView
                             android:id="@+id/iv_head"
                             android:layout_width="57dp"
                             android:layout_height="57dp"
                             android:layout_marginStart="22dp"
-                            android:src="@mipmap/default_nor_avatar" />
+                            android:src="@mipmap/default_nor_avatar"
+                            app:leftBottom_corner_radius="6dp"
+                            app:leftTop_corner_radius="6dp"
+                            app:rightBottom_corner_radius="6dp"
+                            app:rightTop_corner_radius="6dp"
+                            binding:type="round"
+                            binding:url="@{viewModel.entity.head}" />
 
                         <TextView
                             android:id="@+id/tv_name"
@@ -60,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="11.5dp"
                             android:layout_toEndOf="@+id/iv_head"
-                            android:text="Miya-Z_wx"
+                            android:text="@{viewModel.entity.name}"
                             android:textColor="@color/black"
                             android:textSize="19.5sp" />
 
@@ -93,7 +98,7 @@
                             android:layout_toStartOf="@+id/iv_code"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="号：456"
+                            android:text="@{viewModel.entity.wxId}"
                             android:textColor="@color/color_7F7F7F"
                             android:textSize="14sp" />
                     </RelativeLayout>
