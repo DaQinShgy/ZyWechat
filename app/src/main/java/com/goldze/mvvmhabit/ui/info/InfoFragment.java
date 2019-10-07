@@ -109,11 +109,7 @@ public class InfoFragment extends BaseFragment<FragmentInfoBinding, InfoViewMode
                         // 设置网格显示模式
                         .setGuidelines(CropImageView.Guidelines.OFF)
                         // 圆形/矩形
-                        .setCropShape(CropImageView.CropShape.RECTANGLE)
-                        // 调整裁剪后的图片最终大小
-                        .setRequestedSize(960, 960)
-                        // 宽高比
-                        .setAspectRatio(16, 16);
+                        .setCropShape(CropImageView.CropShape.RECTANGLE);
             }
 
             // 用户拒绝授权回调

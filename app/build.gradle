@@ -40,4 +40,5 @@ dependencies {
 //    implementation rootProject.ext.dependencies.MVVMHabit
 
     implementation 'com.linchaolong.android:imagepicker:1.5'
+    implementation 'org.raphets:roundimageview:1.2.0'
 }
