@@ -1,13 +1,11 @@
 package com.goldze.mvvmhabit.ui.main;
 
 import android.app.Application;
-import android.arch.lifecycle.MutableLiveData;
-import android.databinding.ObservableBoolean;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.goldze.mvvmhabit.entity.FormEntity;
-import com.goldze.mvvmhabit.ui.form.FormFragment;
+import com.goldze.mvvmhabit.entity.InfoEntity;
+import com.goldze.mvvmhabit.ui.form.InfoFragment;
 import com.goldze.mvvmhabit.ui.network.NetWorkFragment;
 import com.goldze.mvvmhabit.ui.rv_multi.MultiRecycleViewFragment;
 import com.goldze.mvvmhabit.ui.tab_bar.activity.TabBarActivity;
@@ -72,7 +70,7 @@ public class DemoViewModel extends BaseViewModel {
     public BindingCommand formSbmClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            startContainerActivity(FormFragment.class.getCanonicalName());
+            startContainerActivity(InfoFragment.class.getCanonicalName());
         }
     });
     //表单修改点击事件
@@ -80,16 +78,12 @@ public class DemoViewModel extends BaseViewModel {
         @Override
         public void call() {
             //模拟一个修改的实体数据
-            FormEntity entity = new FormEntity();
-            entity.setId("12345678");
-            entity.setName("goldze");
-            entity.setSex("1");
-            entity.setBir("xxxx年xx月xx日");
-            entity.setMarry(true);
+            InfoEntity entity = new InfoEntity();
+
             //传入实体数据
             Bundle mBundle = new Bundle();
             mBundle.putParcelable("entity", entity);
-            startContainerActivity(FormFragment.class.getCanonicalName(), mBundle);
+            startContainerActivity(InfoFragment.class.getCanonicalName(), mBundle);
         }
     });
     //权限申请

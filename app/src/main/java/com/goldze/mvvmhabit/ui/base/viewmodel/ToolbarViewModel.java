@@ -23,7 +23,7 @@ public class ToolbarViewModel<M extends BaseModel> extends BaseViewModel<M> {
     //标题文字
     public ObservableField<String> titleText = new ObservableField<>("");
     //右边文字
-    public ObservableField<String> rightText = new ObservableField<>("更多");
+    public ObservableField<String> rightText = new ObservableField<>("完成");
     //右边文字的观察者
     public ObservableInt rightTextVisibleObservable = new ObservableInt(View.GONE);
     //右边图标的观察者

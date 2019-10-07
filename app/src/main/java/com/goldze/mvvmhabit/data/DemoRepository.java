@@ -71,8 +71,13 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
-    public void savePassword(String password) {
-        mLocalDataSource.savePassword(password);
+    public void saveWxId(String wxId) {
+        mLocalDataSource.saveWxId(wxId);
+    }
+
+    @Override
+    public void saveHead(String head) {
+        mLocalDataSource.saveHead(head);
     }
 
     @Override
@@ -81,7 +86,13 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
-    public String getPassword() {
-        return mLocalDataSource.getPassword();
+    public String getWxId() {
+        return mLocalDataSource.getWxId();
     }
+
+    @Override
+    public String getHead() {
+        return mLocalDataSource.getHead();
+    }
+
 }

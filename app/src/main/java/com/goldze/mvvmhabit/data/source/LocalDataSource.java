@@ -4,24 +4,16 @@ package com.goldze.mvvmhabit.data.source;
  * Created by goldze on 2019/3/26.
  */
 public interface LocalDataSource {
-    /**
-     * 保存用户名
-     */
+
     void saveUserName(String userName);
 
-    /**
-     * 保存用户密码
-     */
+    void saveWxId(String wxId);
 
-    void savePassword(String password);
+    void saveHead(String head);
 
-    /**
-     * 获取用户名
-     */
     String getUserName();
 
-    /**
-     * 获取用户密码
-     */
-    String getPassword();
+    String getWxId();
+
+    String getHead();
 }

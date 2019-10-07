@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
+import com.goldze.mvvmhabit.ui.form.InfoViewModel;
+import com.goldze.mvvmhabit.ui.input.InputViewModel;
 import com.goldze.mvvmhabit.ui.mine.MineViewModel;
 import com.goldze.mvvmhabit.ui.network.NetWorkViewModel;
 
@@ -48,6 +50,10 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new NetWorkViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(MineViewModel.class)) {
             return (T) new MineViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(InfoViewModel.class)) {
+            return (T) new InfoViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(InputViewModel.class)) {
+            return (T) new InputViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
