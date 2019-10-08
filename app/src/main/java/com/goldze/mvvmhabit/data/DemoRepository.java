@@ -5,7 +5,10 @@ import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.source.HttpDataSource;
 import com.goldze.mvvmhabit.data.source.LocalDataSource;
+import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.entity.DemoEntity;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
@@ -86,6 +89,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
+    public void saveBankCard(BankCard bankCard) {
+        mLocalDataSource.saveBankCard(bankCard);
+    }
+
+    @Override
     public String getUserName() {
         return mLocalDataSource.getUserName();
     }
@@ -103,6 +111,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     @Override
     public String getBalance() {
         return mLocalDataSource.getBalance();
+    }
+
+    @Override
+    public List<BankCard> getAllBankCard() {
+        return mLocalDataSource.getAllBankCard();
     }
 
 }

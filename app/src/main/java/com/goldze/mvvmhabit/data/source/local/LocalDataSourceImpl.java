@@ -2,6 +2,11 @@ package com.goldze.mvvmhabit.data.source.local;
 
 import com.goldze.mvvmhabit.data.source.LocalDataSource;
 import com.goldze.mvvmhabit.data.source.http.service.DemoApiService;
+import com.goldze.mvvmhabit.entity.BankCard;
+
+import org.litepal.LitePal;
+
+import java.util.List;
 
 import me.goldze.mvvmhabit.utils.SPUtils;
 
@@ -52,6 +57,11 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveBankCard(BankCard bankCard) {
+        bankCard.save();
+    }
+
+    @Override
     public String getUserName() {
         return SPUtils.getInstance().getString("UserName");
     }
@@ -69,5 +79,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
     @Override
     public String getBalance() {
         return SPUtils.getInstance().getString("balance", "0.00");
+    }
+
+    @Override
+    public List<BankCard> getAllBankCard() {
+        return LitePal.findAll(BankCard.class);
     }
 }

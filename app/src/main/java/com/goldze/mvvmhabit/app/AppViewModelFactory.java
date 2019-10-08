@@ -9,6 +9,7 @@ import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.ui.balance.BalanceViewModel;
+import com.goldze.mvvmhabit.ui.bank.BankViewModel;
 import com.goldze.mvvmhabit.ui.info.InfoViewModel;
 import com.goldze.mvvmhabit.ui.input.InputViewModel;
 import com.goldze.mvvmhabit.ui.mine.MineViewModel;
@@ -63,6 +64,8 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new WalletViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(BalanceViewModel.class)) {
             return (T) new BalanceViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(BankViewModel.class)) {
+            return (T) new BankViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }

@@ -4,6 +4,8 @@ import com.goldze.mvvmhabit.BuildConfig;
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.ui.mine.MineActivity;
 
+import org.litepal.LitePal;
+
 import me.goldze.mvvmhabit.base.BaseApplication;
 import me.goldze.mvvmhabit.crash.CaocConfig;
 import me.goldze.mvvmhabit.utils.KLog;
@@ -20,6 +22,9 @@ public class AppApplication extends BaseApplication {
         KLog.init(BuildConfig.DEBUG);
         //初始化全局异常崩溃
         initCrash();
+
+        LitePal.initialize(this);
+        LitePal.getDatabase();
     }
 
     private void initCrash() {

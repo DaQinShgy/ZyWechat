@@ -11,6 +11,7 @@ import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.PayItem;
 import com.goldze.mvvmhabit.ui.balance.BalanceFragment;
+import com.goldze.mvvmhabit.ui.bank.BankFragment;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
 import com.goldze.mvvmhabit.ui.pay.PayItemViewModel;
 
@@ -56,6 +57,7 @@ public class WalletViewModel extends ToolbarViewModel<DemoRepository> {
     public BindingCommand cardClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            startContainerActivity(BankFragment.class.getCanonicalName());
         }
     });
 
