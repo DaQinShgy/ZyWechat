@@ -1,4 +1,4 @@
-package com.goldze.mvvmhabit.ui.loan;
+package com.goldze.mvvmhabit.ui.loan_input;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import com.goldze.mvvmhabit.databinding.FragmentLoanBinding;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 
-public class LoanFragment extends BaseFragment<FragmentLoanBinding, LoanViewModel> {
+public class LInputFragment extends BaseFragment<FragmentLoanBinding, LInputViewModel> {
 
     @Override
     public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return R.layout.fragment_loan;
+        return R.layout.fragment_linput;
     }
 
     @Override
@@ -25,10 +25,10 @@ public class LoanFragment extends BaseFragment<FragmentLoanBinding, LoanViewMode
     }
 
     @Override
-    public LoanViewModel initViewModel() {
+    public LInputViewModel initViewModel() {
         //使用自定义的ViewModelFactory来创建ViewModel，如果不重写该方法，则默认会调用NetWorkViewModel(@NonNull Application application)构造方法
         AppViewModelFactory factory = AppViewModelFactory.getInstance(getActivity().getApplication());
-        return ViewModelProviders.of(this, factory).get(LoanViewModel.class);
+        return ViewModelProviders.of(this, factory).get(LInputViewModel.class);
     }
 
     @Override

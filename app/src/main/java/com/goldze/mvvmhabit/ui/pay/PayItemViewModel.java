@@ -5,10 +5,8 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 
-import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.entity.PayItem;
-import com.goldze.mvvmhabit.ui.loan.LoanFragment;
-import com.goldze.mvvmhabit.ui.wallet.WalletFragment;
+import com.goldze.mvvmhabit.ui.loan_first.LoanFragment;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;

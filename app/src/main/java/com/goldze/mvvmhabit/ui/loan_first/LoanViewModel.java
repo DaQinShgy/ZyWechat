@@ -1,4 +1,4 @@
-package com.goldze.mvvmhabit.ui.loan;
+package com.goldze.mvvmhabit.ui.loan_first;
 
 import android.app.Application;
 import android.databinding.ObservableField;
@@ -7,6 +7,10 @@ import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
+import com.goldze.mvvmhabit.ui.loan_input.LInputFragment;
+
+import me.goldze.mvvmhabit.binding.command.BindingAction;
+import me.goldze.mvvmhabit.binding.command.BindingCommand;
 
 public class LoanViewModel extends ToolbarViewModel<DemoRepository> {
 
@@ -32,8 +36,10 @@ public class LoanViewModel extends ToolbarViewModel<DemoRepository> {
         setTitleText("微粒贷");
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
+    public BindingCommand clickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startContainerActivity(LInputFragment.class.getCanonicalName());
+        }
+    });
 }

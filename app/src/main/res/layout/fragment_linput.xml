@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.goldze.mvvmhabit.ui.loan_input.LInputViewModel" />
+
+        <variable
+            name="viewModel"
+            type="LInputViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDEDED"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar1"
+            binding:toolbarViewModel="@{viewModel.toolbarViewModel}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_rmb"
+                android:layout_width="15dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="47dp"
+                android:src="@mipmap/ic_rmb_input" />
+
+            <EditText
+                android:id="@+id/et"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="36dp"
+                android:layout_toEndOf="@+id/iv_rmb"
+                android:background="@null"
+                android:hint="输入金额"
+                android:textColorHint="#CCCCCC"
+                android:textSize="30sp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/et"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
+                android:background="#FFD143" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/et"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
+                android:background="#FF5A4F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_alignStart="@+id/divider"
+                android:layout_marginTop="8dp"
+                android:text="按日计息，次日起可提前还，免违约金"
+                android:textColor="#ff808080"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_alignStart="@+id/divider"
+                android:layout_marginTop="8dp"
+                android:text="按日计息，次日起可提前还，免违约金"
+                android:textColor="#FF5A4F"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/shape_loan_next"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

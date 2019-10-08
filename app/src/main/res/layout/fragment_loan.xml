@@ -3,7 +3,7 @@
 
     <data>
 
-        <import type="com.goldze.mvvmhabit.ui.loan.LoanViewModel" />
+        <import type="com.goldze.mvvmhabit.ui.loan_first.LoanViewModel" />
 
         <variable
             name="viewModel"
@@ -90,7 +90,8 @@
                 android:gravity="center"
                 android:text="借钱"
                 android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                binding:onClickCommand="@{viewModel.clickCommand}" />
         </LinearLayout>
 
         <View
