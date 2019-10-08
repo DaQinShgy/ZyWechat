@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.InfoEntity;
 import com.goldze.mvvmhabit.ui.info.InfoFragment;
+import com.goldze.mvvmhabit.ui.pay.PayFragment;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -34,14 +35,19 @@ public class MineViewModel extends BaseViewModel<DemoRepository> {
         entity.notifyChange();
     }
 
-    //登录按钮的点击事件
-    public BindingCommand clickCommand = new BindingCommand(new BindingAction() {
+    public BindingCommand infoClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
             startContainerActivity(InfoFragment.class.getCanonicalName());
         }
     });
 
+    public BindingCommand payClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startContainerActivity(PayFragment.class.getCanonicalName());
+        }
+    });
 
     @Override
     public void onDestroy() {

@@ -11,9 +11,13 @@ public interface LocalDataSource {
 
     void saveHead(String head);
 
+    void saveBalance(String balance);
+
     String getUserName();
 
     String getWxId();
 
     String getHead();
+
+    String getBalance();
 }

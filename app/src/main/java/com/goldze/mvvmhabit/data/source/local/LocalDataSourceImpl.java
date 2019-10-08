@@ -47,6 +47,11 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveBalance(String balance) {
+        SPUtils.getInstance().put("balance", balance);
+    }
+
+    @Override
     public String getUserName() {
         return SPUtils.getInstance().getString("UserName");
     }
@@ -59,5 +64,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
     @Override
     public String getHead() {
         return SPUtils.getInstance().getString("Head");
+    }
+
+    @Override
+    public String getBalance() {
+        return SPUtils.getInstance().getString("balance", "0.00");
     }
 }

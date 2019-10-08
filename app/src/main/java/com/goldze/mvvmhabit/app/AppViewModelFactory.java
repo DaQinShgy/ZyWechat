@@ -8,10 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
+import com.goldze.mvvmhabit.ui.balance.BalanceViewModel;
 import com.goldze.mvvmhabit.ui.info.InfoViewModel;
 import com.goldze.mvvmhabit.ui.input.InputViewModel;
 import com.goldze.mvvmhabit.ui.mine.MineViewModel;
 import com.goldze.mvvmhabit.ui.network.NetWorkViewModel;
+import com.goldze.mvvmhabit.ui.pay.PayViewModel;
+import com.goldze.mvvmhabit.ui.wallet.WalletViewModel;
 
 /**
  * Created by goldze on 2019/3/26.
@@ -54,6 +57,12 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new InfoViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(InputViewModel.class)) {
             return (T) new InputViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(PayViewModel.class)) {
+            return (T) new PayViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(WalletViewModel.class)) {
+            return (T) new WalletViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(BalanceViewModel.class)) {
+            return (T) new BalanceViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }

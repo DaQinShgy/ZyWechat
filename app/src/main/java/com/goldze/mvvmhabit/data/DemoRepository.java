@@ -81,6 +81,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
+    public void saveBalance(String balance) {
+        mLocalDataSource.saveBalance(balance);
+    }
+
+    @Override
     public String getUserName() {
         return mLocalDataSource.getUserName();
     }
@@ -93,6 +98,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     @Override
     public String getHead() {
         return mLocalDataSource.getHead();
+    }
+
+    @Override
+    public String getBalance() {
+        return mLocalDataSource.getBalance();
     }
 
 }

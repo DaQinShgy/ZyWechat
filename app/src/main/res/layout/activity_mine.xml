@@ -35,7 +35,7 @@
                         android:layout_width="17.5dp"
                         android:layout_height="14dp"
                         android:layout_gravity="end"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginEnd="16dp"
                         android:src="@mipmap/ic_mine_camera" />
 
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:layout_marginBottom="36dp"
-                        binding:onClickCommand="@{viewModel.clickCommand}">
+                        binding:onClickCommand="@{viewModel.infoClickCommand}">
 
                         <org.raphets.roundimageview.RoundImageView
                             android:id="@+id/iv_head"
@@ -76,6 +76,7 @@
                             android:layout_alignBottom="@+id/tv_number"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="14dp"
+                            android:layout_marginBottom="3dp"
                             android:src="@mipmap/ic_arrow_right" />
 
                         <ImageView
@@ -112,7 +113,8 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="15.5dp"
-                    android:paddingEnd="14dp">
+                    android:paddingEnd="14dp"
+                    binding:onClickCommand="@{viewModel.payClickCommand}">
 
                     <ImageView
                         android:layout_width="20dp"
