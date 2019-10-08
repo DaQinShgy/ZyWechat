@@ -8,11 +8,12 @@ import android.view.ViewGroup;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
+import com.goldze.mvvmhabit.databinding.FragmentLinputBinding;
 import com.goldze.mvvmhabit.databinding.FragmentLoanBinding;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 
-public class LInputFragment extends BaseFragment<FragmentLoanBinding, LInputViewModel> {
+public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputViewModel> {
 
     @Override
     public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

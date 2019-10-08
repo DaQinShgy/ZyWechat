@@ -47,6 +47,9 @@
                 android:layout_toEndOf="@+id/iv_rmb"
                 android:background="@null"
                 android:hint="输入金额"
+                android:inputType="number"
+                android:maxLength="8"
+                android:textColor="@color/black"
                 android:textColorHint="#CCCCCC"
                 android:textSize="30sp" />
 
