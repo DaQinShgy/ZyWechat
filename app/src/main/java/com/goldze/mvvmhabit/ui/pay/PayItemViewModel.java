@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.entity.PayItem;
+import com.goldze.mvvmhabit.ui.loan.LoanFragment;
 import com.goldze.mvvmhabit.ui.wallet.WalletFragment;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
@@ -34,7 +35,7 @@ public class PayItemViewModel extends ItemViewModel<PayViewModel> {
         @Override
         public void call() {
             if ("微粒贷借钱".equals(entity.get().getName())) {
-                viewModel.startContainerActivity(WalletFragment.class.getCanonicalName());
+                viewModel.startContainerActivity(LoanFragment.class.getCanonicalName());
             }
         }
     });
