@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="62dp"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_point"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_month_yellow" />
+
+    <View
+        android:id="@+id/view_top"
+        android:layout_width="2dp"
+        android:layout_height="6dp"
+        android:layout_alignStart="@+id/view_point"
+        android:layout_marginStart="2dp"
+        android:background="#EBEBEB" />
+
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_point"
+        android:layout_alignStart="@+id/view_point"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:background="#EBEBEB" />
+
+    <TextView
+        android:id="@+id/tv_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/view_point"
+        android:layout_marginEnd="21dp"
+        android:text="第1期"
+        android:textColor="#ff000000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_0"
+        android:layout_alignEnd="@+id/tv_0"
+        android:layout_marginTop="5dp"
+        android:text="2019"
+        android:textColor="#ff7e7e7e"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/view_point"
+        android:text="应还"
+        android:textColor="#ff000000"
+        android:textSize="16sp" />
+
+</RelativeLayout>

@@ -8,7 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
+import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
+
+import java.util.List;
 
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
@@ -28,6 +31,8 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
     public ObservableInt content = new ObservableInt(View.INVISIBLE);
 
     public ObservableInt month = new ObservableInt(5);
+
+    public ObservableInt showDetail = new ObservableInt(View.GONE);
 
     public LInputViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
@@ -113,6 +118,32 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         @Override
         public void call() {
             clickEvent.setValue(0);
+        }
+    });
+
+    public BindingCommand dateClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            clickEvent.setValue(1);
+        }
+    });
+
+
+    public BindingCommand cardClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            clickEvent.setValue(2);
+        }
+    });
+
+    public List<BankCard> getAllCard() {
+        return model.getAllBankCard();
+    }
+
+    public BindingCommand detailClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            showDetail.set(showDetail.get() == View.VISIBLE ? View.GONE : View.VISIBLE);
         }
     });
 

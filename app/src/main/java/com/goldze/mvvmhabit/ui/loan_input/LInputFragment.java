@@ -11,12 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentLinputBinding;
-import com.goldze.mvvmhabit.databinding.FragmentLoanBinding;
+import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.ui.base.BaseDialog;
+
+import java.util.List;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 
@@ -55,6 +59,10 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
                 //pSwitchObservable是boolean类型的观察者,所以可以直接使用它的值改变密码开关的图标
                 if (integer == 0) {
                     showMonthsDialog();
+                } else if (integer == 1) {
+                    showDateDialog();
+                } else if (integer == 2) {
+                    showCardDialog();
                 }
             }
         });
@@ -123,6 +131,46 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
             mViewMonth.findViewById(R.id.ll_20).setOnClickListener(onClickListener);
         }
         mBaseDialog.show(mViewMonth);
+    }
+
+    private void showDateDialog() {
+        if (mBaseDialog == null)
+            mBaseDialog = new BaseDialog(getActivity());
+        View view = getLayoutInflater().inflate(R.layout.dialog_date, null);
+        view.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBaseDialog.dismiss();
+            }
+        });
+        ((TextView) view.findViewById(R.id.tv_2)).setText("¥" + viewModel.money.get());
+        ((TextView) view.findViewById(R.id.tv_3)).setText(String.format("借满%s个月总利息", viewModel.month.get()));
+        LinearLayout layout = view.findViewById(R.id.ll_month);
+        for (int i = 0; i < viewModel.month.get(); i++) {
+            View item = getLayoutInflater().inflate(R.layout.item_month, layout, false);
+            if (i == 0)
+                item.findViewById(R.id.view_top).setVisibility(View.INVISIBLE);
+            else if (i == viewModel.month.get() - 1)
+                item.findViewById(R.id.view_bottom).setVisibility(View.INVISIBLE);
+            ((TextView) item.findViewById(R.id.tv_0)).setText(String.format("第%s期", i + 1));
+            layout.addView(item);
+        }
+        mBaseDialog.show(view);
+    }
+
+    private void showCardDialog() {
+        if (mBaseDialog == null)
+            mBaseDialog = new BaseDialog(getActivity());
+        View view = getLayoutInflater().inflate(R.layout.dialog_card, null);
+        view.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBaseDialog.dismiss();
+            }
+        });
+        List<BankCard> list = viewModel.getAllCard();
+
+        mBaseDialog.show(view);
     }
 
 }

@@ -32,22 +32,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
             android:text="日利率"
             android:textColor="#ff8f8f8f"
             android:textSize="14sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="7dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="每月应还本金"
-            android:textColor="#ff8f8f8f"
+            android:text="0.03%"
+            android:textColor="#ff000000"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -60,8 +54,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:text="每月应还本金"
+            android:textColor="#ff8f8f8f"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥100.00"
+            android:textColor="#ff000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="7dp">
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
             android:text="借满5个月总利息"
             android:textColor="#ff8f8f8f"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥15.27"
+            android:textColor="#ff000000"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -72,6 +98,7 @@
         android:layout_marginBottom="60dp">
 
         <LinearLayout
+            android:id="@+id/ll_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
