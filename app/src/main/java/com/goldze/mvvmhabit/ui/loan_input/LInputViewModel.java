@@ -8,9 +8,18 @@ import android.view.View;
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
 
+import me.goldze.mvvmhabit.binding.command.BindingAction;
+import me.goldze.mvvmhabit.binding.command.BindingCommand;
+import me.goldze.mvvmhabit.binding.command.BindingConsumer;
+import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
+
 public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
 
     public ObservableField<String> balance = new ObservableField<>("");
+
+    public ObservableField<Integer> dividerType = new ObservableField<>(0);
+
+    public ObservableField<Integer> month = new ObservableField<>(5);
 
     public LInputViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
@@ -32,8 +41,20 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         setTitleText("微粒贷");
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
+    public BindingCommand<Boolean> onFocusChangeCommand = new BindingCommand<>(new BindingConsumer<Boolean>() {
+        @Override
+        public void call(Boolean hasFocus) {
+
+        }
+    });
+
+    public SingleLiveEvent<Integer> clickEvent = new SingleLiveEvent<>();
+
+    public BindingCommand monthClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            clickEvent.setValue(0);
+        }
+    });
+
 }

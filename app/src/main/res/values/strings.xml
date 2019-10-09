@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">微小信</string>
+
+    <string name="txt_month5">5个月</string>
+    <string name="txt_month10">10个月</string>
+    <string name="txt_month20">20个月</string>
 </resources>
