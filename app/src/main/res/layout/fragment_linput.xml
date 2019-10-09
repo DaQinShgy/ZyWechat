@@ -27,6 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="155dp"
             android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <ImageView
@@ -49,6 +51,7 @@
                 android:hint="输入金额"
                 android:inputType="number"
                 android:maxLength="8"
+                android:text="@={viewModel.money}"
                 android:textColor="@color/black"
                 android:textColorHint="#CCCCCC"
                 android:textSize="30sp"
@@ -62,7 +65,8 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="36dp"
-                android:background="#FFD143" />
+                android:background="#FFD143"
+                android:visibility="@{viewModel.dividerYellow}" />
 
             <View
                 android:layout_width="match_parent"
@@ -71,7 +75,8 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="36dp"
-                android:background="#D7D7D7" />
+                android:background="#D7D7D7"
+                android:visibility="@{viewModel.dividerGray}" />
 
             <View
                 android:layout_width="match_parent"
@@ -80,7 +85,8 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="36dp"
-                android:background="#FF5A4F" />
+                android:background="#FF5A4F"
+                android:visibility="@{viewModel.dividerRed}" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -90,7 +96,8 @@
                 android:layout_marginTop="8dp"
                 android:text="按日计息，次日起可提前还，免违约金"
                 android:textColor="#ff808080"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:visibility="@{viewModel.textHint}" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,130 +105,138 @@
                 android:layout_below="@+id/divider"
                 android:layout_alignStart="@+id/divider"
                 android:layout_marginTop="8dp"
-                android:text="按日计息，次日起可提前还，免违约金"
+                android:text="@{viewModel.textRed}"
                 android:textColor="#FF5A4F"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:visibility="@{viewModel.dividerRed}" />
         </RelativeLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/shape_white"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.content}">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:paddingStart="20dp"
-                android:paddingEnd="17dp"
-                binding:onClickCommand="@{viewModel.monthClickCommand}">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/shape_white"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="17dp"
+                        binding:onClickCommand="@{viewModel.monthClickCommand}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="借款期数"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.month==5 ? @string/txt_month5 : viewModel.month==10 ? @string/txt_month10 : @string/txt_month20}"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="12dp"
+                            android:src="@mipmap/ic_arrow_right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="17dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="还款计划"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5个月"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="12dp"
+                            android:src="@mipmap/ic_arrow_right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="17dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="收款银行卡"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5个月"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="12dp"
+                            android:src="@mipmap/ic_arrow_right" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="借款期数"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:text="详情及协议"
                     android:textColor="#ff000000"
                     android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.month==5 ? @string/txt_month5 : viewModel.month==10 ? @string/txt_month10 : @string/txt_month20}"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:layout_width="7dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="12dp"
-                    android:src="@mipmap/ic_arrow_right" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:paddingStart="20dp"
-                android:paddingEnd="17dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="还款计划"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5个月"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:layout_width="7dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="12dp"
-                    android:src="@mipmap/ic_arrow_right" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:paddingStart="20dp"
-                android:paddingEnd="17dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="收款银行卡"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5个月"
-                    android:textColor="#ff000000"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:layout_width="7dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="12dp"
-                    android:src="@mipmap/ic_arrow_right" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/shape_white"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:text="详情及协议"
-            android:textColor="#ff000000"
-            android:textSize="14sp" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        </ScrollView>
 
         <TextView
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginTop="-110dp"
             android:background="@drawable/shape_loan_next"
             android:gravity="center"
             android:text="下一步"
