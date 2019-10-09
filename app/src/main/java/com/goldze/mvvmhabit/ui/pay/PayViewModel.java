@@ -49,7 +49,7 @@ public class PayViewModel extends ToolbarViewModel<DemoRepository> {
     public void onCreate() {
         super.onCreate();
         balance.set("¥" + model.getBalance());
-        initTop(false);
+        initTop(model.getDai());
         List<PayItem> list = new ArrayList<>();
         for (int i = 0; i < resourceBottom.length; i++) {
             list.add(new PayItem(resourceBottom[i], nameBottom[i]));
@@ -82,6 +82,7 @@ public class PayViewModel extends ToolbarViewModel<DemoRepository> {
     public BindingCommand daiClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            model.saveDai(observableListTop.size() != 8);
             initTop(observableListTop.size() != 8);
         }
     });

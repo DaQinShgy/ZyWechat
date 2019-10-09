@@ -11,10 +11,12 @@ import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
+import com.hb.dialog.myDialog.MyAlertInputDialog;
 
 import java.util.List;
 
 import me.goldze.mvvmhabit.base.MultiItemViewModel;
+import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 import me.tatarka.bindingcollectionadapter2.ItemBinding;
 import me.tatarka.bindingcollectionadapter2.OnItemBind;
 
@@ -26,6 +28,11 @@ public class BankViewModel extends ToolbarViewModel<DemoRepository> {
 
     public BankViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
+        loadData();
+    }
+
+    private void loadData() {
+        observableList.clear();
         List<BankCard> bankCards = model.getAllBankCard();
         for (BankCard card : bankCards) {
             MultiItemViewModel item = new Type0ViewModel(this, card);
@@ -66,4 +73,12 @@ public class BankViewModel extends ToolbarViewModel<DemoRepository> {
             }
         }
     });
+
+    public SingleLiveEvent<Boolean> addEvent = new SingleLiveEvent<>();
+
+    public void saveBankCard(BankCard bankCard) {
+        model.saveBankCard(bankCard);
+        loadData();
+    }
+
 }

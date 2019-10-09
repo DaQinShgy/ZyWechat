@@ -24,7 +24,7 @@ public class Type2ViewModel extends MultiItemViewModel {
     public BindingCommand itemClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            ToastUtils.showShort("我是头布局");
+
         }
     });
 }

@@ -133,6 +133,12 @@
                         binding:items="@{viewModel.observableListTop}"
                         binding:layoutManager="@{LayoutManagers.grid(3)}"
                         binding:lineManager="@{LineManagers.both()}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="97dp"
+                        android:layout_marginTop="-97dp"
+                        binding:onLongClickCommand="@{viewModel.daiClickCommand}" />
                 </LinearLayout>
 
                 <LinearLayout

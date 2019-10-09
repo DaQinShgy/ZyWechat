@@ -41,7 +41,7 @@ public class BankUtil {
     public static String getNameOfBank(String idCard) {
         int index = -1;
         if (idCard == null || idCard.length() < 16 || idCard.length() > 19) {
-            return "";
+            return "银行卡号位数不对";
         }
         //6位Bin号
         String cardbin_6 = idCard.substring(0, 6);

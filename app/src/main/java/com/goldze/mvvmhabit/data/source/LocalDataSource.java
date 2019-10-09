@@ -19,6 +19,8 @@ public interface LocalDataSource {
 
     void saveBankCard(BankCard bankCard);
 
+    void saveDai(boolean dai);
+
     String getUserName();
 
     String getWxId();
@@ -28,4 +30,6 @@ public interface LocalDataSource {
     String getBalance();
 
     List<BankCard> getAllBankCard();
+
+    boolean getDai();
 }

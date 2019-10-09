@@ -1,13 +1,23 @@
 package com.goldze.mvvmhabit.ui.bank;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentBankBinding;
+import com.goldze.mvvmhabit.entity.BankCard;
+import com.goldze.mvvmhabit.utils.BankUtil;
+import com.hb.dialog.myDialog.MyAlertInputDialog;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class BankActivity extends BaseActivity<FragmentBankBinding, BankViewModel> {
 
@@ -44,7 +54,60 @@ public class BankActivity extends BaseActivity<FragmentBankBinding, BankViewMode
 
     @Override
     public void initViewObservable() {
+        viewModel.addEvent.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean aBoolean) {
+                //pSwitchObservable是boolean类型的观察者,所以可以直接使用它的值改变密码开关的图标
+                if (viewModel.addEvent.getValue()) {
+                    addBank();
+                }
+            }
+        });
+    }
 
+    private MyAlertInputDialog myAlertInputDialog;
+
+    private void addBank() {
+        if (myAlertInputDialog == null) {
+            myAlertInputDialog = new MyAlertInputDialog(this).builder()
+                    .setTitle("请输入")
+                    .setEditText("");
+            myAlertInputDialog.setPositiveButton("确认", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String cardNo = myAlertInputDialog.getResult();
+                    String cardName = BankUtil.getNameOfBank(cardNo);
+                    if (!cardName.contains("·")) {
+                        ToastUtils.showShort(cardName);
+                        return;
+                    }
+                    BankCard bankCard = new BankCard();
+                    bankCard.setName(cardName.split("·")[0]);
+                    bankCard.setNo("****  ****  ****  " + cardNo.substring(12));
+                    bankCard.setType(cardName.split("·")[1].contains("信用卡") ? "信用卡" : "储蓄卡");
+                    int resourceId0 = 0;
+                    int resourceId1 = 0;
+                    if (cardName.contains("农业银行")) {
+                        resourceId0 = R.mipmap.ic_ny0;
+                        resourceId1 = R.mipmap.ic_ny1;
+                    } else if (cardName.contains("工商银行")) {
+                        resourceId0 = R.mipmap.ic_gs0;
+                        resourceId1 = R.mipmap.ic_gs1;
+                    }
+                    bankCard.setDrawable0(resourceId0);
+                    bankCard.setDrawable1(resourceId1);
+                    viewModel.saveBankCard(bankCard);
+                    myAlertInputDialog.dismiss();
+                }
+            }).setNegativeButton("取消", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myAlertInputDialog.dismiss();
+                }
+            });
+        }
+        myAlertInputDialog.setEditText("");
+        myAlertInputDialog.show();
     }
 
 }

@@ -10,7 +10,9 @@ public class BankCard extends LitePalSupport {
 
     private String no;
 
-    private int drawable;
+    private int drawable0;
+
+    private int drawable1;
 
     public BankCard() {
     }
@@ -43,11 +45,19 @@ public class BankCard extends LitePalSupport {
         this.no = no;
     }
 
-    public int getDrawable() {
-        return drawable;
+    public int getDrawable0() {
+        return drawable0;
     }
 
-    public void setDrawable(int drawable) {
-        this.drawable = drawable;
+    public void setDrawable0(int drawable0) {
+        this.drawable0 = drawable0;
+    }
+
+    public int getDrawable1() {
+        return drawable1;
+    }
+
+    public void setDrawable1(int drawable1) {
+        this.drawable1 = drawable1;
     }
 }

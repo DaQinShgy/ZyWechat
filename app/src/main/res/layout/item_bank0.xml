@@ -14,45 +14,52 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:binding="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="94dp"
+        android:layout_height="106dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/shape_bank_item"
         binding:onLongClickCommand="@{viewModel.itemLongClick}">
 
-        <RelativeLayout
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#008C77">
+            android:scaleType="fitXY"
+            android:src="@{viewModel.drawableImg1}" />
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="12dp"
-                android:text="农业银行"
-                android:textColor="#ffffffff"
-                android:textSize="12sp" />
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="13dp"
+            android:src="@{viewModel.drawableImg0}" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title"
-                android:layout_alignStart="@+id/tv_title"
-                android:layout_marginTop="2dp"
-                android:text="储蓄卡"
-                android:textColor="#ff70bfb3"
-                android:textSize="10sp" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="12dp"
+            android:text="@{viewModel.entity.name}"
+            android:textColor="#ffffffff"
+            android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title"
-                android:layout_alignStart="@+id/tv_title"
-                android:layout_marginTop="20dp"
-                android:text="**** **** **** 1678"
-                android:textColor="#ffffffff"
-                android:textSize="25sp" />
-        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_alignStart="@+id/tv_title"
+            android:layout_marginTop="2dp"
+            android:text="@{viewModel.entity.type}"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_alignStart="@+id/tv_title"
+            android:layout_marginTop="20dp"
+            android:text="@{viewModel.entity.no}"
+            android:textColor="#ffffffff"
+            android:textSize="25sp" />
+
     </RelativeLayout>
 </layout>

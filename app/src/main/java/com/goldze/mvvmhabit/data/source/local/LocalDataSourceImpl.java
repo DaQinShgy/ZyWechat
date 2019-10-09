@@ -62,6 +62,11 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveDai(boolean dai) {
+        SPUtils.getInstance().put("dai", dai);
+    }
+
+    @Override
     public String getUserName() {
         return SPUtils.getInstance().getString("UserName");
     }
@@ -84,5 +89,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
     @Override
     public List<BankCard> getAllBankCard() {
         return LitePal.findAll(BankCard.class);
+    }
+
+    @Override
+    public boolean getDai() {
+        return SPUtils.getInstance().getBoolean("dai", false);
     }
 }

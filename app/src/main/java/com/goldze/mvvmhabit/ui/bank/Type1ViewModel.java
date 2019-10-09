@@ -14,9 +14,9 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * Description：
  */
 
-public class Type1ViewModel extends MultiItemViewModel {
+public class Type1ViewModel extends MultiItemViewModel<BankViewModel> {
 
-    public Type1ViewModel(@NonNull BaseViewModel viewModel) {
+    public Type1ViewModel(@NonNull BankViewModel viewModel) {
         super(viewModel);
     }
 
@@ -24,7 +24,7 @@ public class Type1ViewModel extends MultiItemViewModel {
     public BindingCommand itemClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            viewModel.addEvent.setValue(true);
         }
     });
 }

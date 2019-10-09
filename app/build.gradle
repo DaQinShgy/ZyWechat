@@ -42,4 +42,5 @@ dependencies {
     implementation 'com.linchaolong.android:imagepicker:1.5'
     implementation 'org.raphets:roundimageview:1.2.0'
     implementation 'org.litepal.android:java:3.0.0'
+    implementation 'com.github.HanHuoBin:BaseDialog:1.2.0'
 }

@@ -30,9 +30,8 @@ public class BalanceViewModel extends ToolbarViewModel<DemoRepository> {
      */
     public void initToolbar() {
         //初始化标题栏
-        setRightTextVisible(View.VISIBLE);
-        setRightText("零钱明细");
-        setRightIconVisible(View.GONE);
+        setRightTextVisible(View.GONE);
+        setRightIconVisible(View.VISIBLE);
         setTitleText("");
     }
 

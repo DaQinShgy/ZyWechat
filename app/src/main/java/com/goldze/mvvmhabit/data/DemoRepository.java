@@ -94,6 +94,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
+    public void saveDai(boolean dai) {
+        mLocalDataSource.saveDai(dai);
+    }
+
+    @Override
     public String getUserName() {
         return mLocalDataSource.getUserName();
     }
@@ -116,6 +121,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     @Override
     public List<BankCard> getAllBankCard() {
         return mLocalDataSource.getAllBankCard();
+    }
+
+    @Override
+    public boolean getDai() {
+        return mLocalDataSource.getDai();
     }
 
 }
