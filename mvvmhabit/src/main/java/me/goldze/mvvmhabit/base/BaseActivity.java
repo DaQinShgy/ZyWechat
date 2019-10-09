@@ -39,23 +39,15 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     private int viewModelId;
     private MaterialDialog dialog;
 
+    private boolean isDark = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Window window = getWindow();
-        View decorView = window.getDecorView();
-        int option = 0;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        }
-        decorView.setSystemUiVisibility(option);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
         super.onCreate(savedInstanceState);
         //页面接受的参数方法
         initParam();
+        if (isDark)
+            StatusBarUtil.StatusBarLightMode(this);
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding(savedInstanceState);
         //私有的ViewModel与View的契约事件回调逻辑
@@ -66,6 +58,10 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         initViewObservable();
         //注册RxBus
         viewModel.registerRxBus();
+    }
+
+    public void setDark(boolean dark) {
+        isDark = dark;
     }
 
     @Override

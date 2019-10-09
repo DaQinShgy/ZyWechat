@@ -20,7 +20,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.mine.MineActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeWhite">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,6 +35,10 @@
             android:name="com.linchaolong.android.imagepicker.cropper.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".ui.bank.BankActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeBank" />
     </application>
 
 </manifest>

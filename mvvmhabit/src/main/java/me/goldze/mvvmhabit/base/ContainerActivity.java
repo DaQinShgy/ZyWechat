@@ -16,6 +16,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import java.lang.ref.WeakReference;
 
 import me.goldze.mvvmhabit.R;
+import me.goldze.mvvmhabit.utils.StatusBarUtil;
 
 
 /**
@@ -30,18 +31,7 @@ public class ContainerActivity extends RxAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Window window = getWindow();
-        View decorView = window.getDecorView();
-        int option = 0;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        }
-        decorView.setSystemUiVisibility(option);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
+        StatusBarUtil.StatusBarLightMode(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);

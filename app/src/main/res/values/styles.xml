@@ -1,15 +1,43 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--将ActionBar隐藏,这里使用ToolBar-->
         <item name="windowActionBar">false</item>
         <!-- 使用 API Level 22以上编译的话，要拿掉前綴字 -->
         <item name="windowNoTitle">true</item>
         <!--colorPrimary 对应ToolBar的颜色-->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/white</item>
         <!--colorPrimaryDark对应状态栏的颜色-->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#EDEDED</item>
+        <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
+        <item name="colorAccent">#FFD143</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="AppThemeWhite" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--将ActionBar隐藏,这里使用ToolBar-->
+        <item name="windowActionBar">false</item>
+        <!-- 使用 API Level 22以上编译的话，要拿掉前綴字 -->
+        <item name="windowNoTitle">true</item>
+        <!--colorPrimary 对应ToolBar的颜色-->
+        <item name="colorPrimary">@color/white</item>
+        <!--colorPrimaryDark对应状态栏的颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
+        <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
+        <item name="colorAccent">#FFD143</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="AppThemeBank" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--将ActionBar隐藏,这里使用ToolBar-->
+        <item name="windowActionBar">false</item>
+        <!-- 使用 API Level 22以上编译的话，要拿掉前綴字 -->
+        <item name="windowNoTitle">true</item>
+        <!--colorPrimary 对应ToolBar的颜色-->
+        <item name="colorPrimary">@color/white</item>
+        <!--colorPrimaryDark对应状态栏的颜色-->
+        <item name="colorPrimaryDark">#303030</item>
         <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
         <item name="colorAccent">#FFD143</item>
         <item name="android:windowBackground">@color/white</item>
@@ -20,8 +48,10 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/viewLineColor</item>
     </style>
+
     <style name="Theme_Light" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="gallery_ucrop_title_text">@string/gallery_ucrop_menu_crop</item>-->
     </style>
+
     <style name="Theme_Light.Test"></style>
 </resources>
