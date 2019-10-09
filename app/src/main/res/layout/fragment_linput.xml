@@ -558,6 +558,19 @@
             android:gravity="center"
             android:text="下一步"
             android:textColor="#ffffffff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="@{viewModel.btnDefault}" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="-110dp"
+            android:background="@drawable/shape_jie"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="@{viewModel.content}"
+            binding:onClickCommand="@{viewModel.nextClickCommand}" />
     </LinearLayout>
 </layout>

@@ -10,6 +10,7 @@ import android.view.View;
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
+import com.goldze.mvvmhabit.ui.loan_check.CheckFragment;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
     public ObservableField<String> textRed = new ObservableField<>("");
 
     public ObservableInt content = new ObservableInt(View.INVISIBLE);
+    public ObservableInt btnDefault = new ObservableInt(View.VISIBLE);
 
     public ObservableInt month = new ObservableInt(5);
 
@@ -63,6 +65,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 dividerRed.set(View.INVISIBLE);
                 textHint.set(View.VISIBLE);
                 content.set(View.INVISIBLE);
+                btnDefault.set(View.VISIBLE);
                 return;
             }
             int result = Integer.parseInt(money.get());
@@ -72,6 +75,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 dividerRed.set(View.VISIBLE);
                 textHint.set(View.INVISIBLE);
                 content.set(View.INVISIBLE);
+                btnDefault.set(View.VISIBLE);
                 if (result < 500)
                     textRed.set("单笔借钱金额最低¥500");
                 else
@@ -89,6 +93,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 dividerRed.set(View.INVISIBLE);
                 textHint.set(View.VISIBLE);
                 content.set(View.INVISIBLE);
+                btnDefault.set(View.VISIBLE);
                 return;
             }
             int result = Integer.parseInt(money.get());
@@ -98,6 +103,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 dividerRed.set(View.VISIBLE);
                 textHint.set(View.INVISIBLE);
                 content.set(View.INVISIBLE);
+                btnDefault.set(View.VISIBLE);
                 if (result < 500)
                     textRed.set("单笔借钱金额最低¥500");
                 else
@@ -110,6 +116,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
             textHint.set(View.VISIBLE);
         }
         content.set(View.VISIBLE);
+        btnDefault.set(View.GONE);
     }
 
     public SingleLiveEvent<Integer> clickEvent = new SingleLiveEvent<>();
@@ -144,6 +151,13 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         @Override
         public void call() {
             showDetail.set(showDetail.get() == View.VISIBLE ? View.GONE : View.VISIBLE);
+        }
+    });
+
+    public BindingCommand nextClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startContainerActivity(CheckFragment.class.getCanonicalName());
         }
     });
 
