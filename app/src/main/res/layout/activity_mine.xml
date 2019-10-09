@@ -276,7 +276,8 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="15.5dp"
-                    android:paddingEnd="14dp">
+                    android:paddingEnd="14dp"
+                    binding:onClickCommand="@{viewModel.setClickCommand}">
 
                     <ImageView
                         android:layout_width="20dp"

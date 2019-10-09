@@ -8,6 +8,7 @@ import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.InfoEntity;
 import com.goldze.mvvmhabit.ui.info.InfoFragment;
 import com.goldze.mvvmhabit.ui.pay.PayFragment;
+import com.goldze.mvvmhabit.ui.set.SetActivity;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -46,6 +47,13 @@ public class MineViewModel extends BaseViewModel<DemoRepository> {
         @Override
         public void call() {
             startContainerActivity(PayFragment.class.getCanonicalName());
+        }
+    });
+
+    public BindingCommand setClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startActivity(SetActivity.class);
         }
     });
 

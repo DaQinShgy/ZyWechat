@@ -39,6 +39,10 @@
             android:name=".ui.bank.BankActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeBank" />
+
+        <activity
+            android:name=".ui.set.SetActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

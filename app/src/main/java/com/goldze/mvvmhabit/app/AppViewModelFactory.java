@@ -17,6 +17,7 @@ import com.goldze.mvvmhabit.ui.loan_input.LInputViewModel;
 import com.goldze.mvvmhabit.ui.mine.MineViewModel;
 import com.goldze.mvvmhabit.ui.network.NetWorkViewModel;
 import com.goldze.mvvmhabit.ui.pay.PayViewModel;
+import com.goldze.mvvmhabit.ui.set.SetViewModel;
 import com.goldze.mvvmhabit.ui.wallet.WalletViewModel;
 
 /**
@@ -72,6 +73,8 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new LoanViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(LInputViewModel.class)) {
             return (T) new LInputViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(SetViewModel.class)) {
+            return (T) new SetViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
