@@ -66,7 +66,7 @@ public class AddCardDialog extends Dialog {
                 if (name.contains("农业银行")) {
                     resourceId0 = R.mipmap.ic_ny0;
                     resourceId1 = R.mipmap.ic_ny1;
-                    // resourceId2 = R.mipmap.ic_ny2;
+                    resourceId2 = R.mipmap.ic_ny2;
                 } else if (name.contains("工商银行")) {
                     resourceId0 = R.mipmap.ic_gs0;
                     resourceId1 = R.mipmap.ic_gs1;

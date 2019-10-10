@@ -43,7 +43,7 @@ public class StatusBarUtil {
         return result;
     }
 
-    static void setStatusBarColor(int statusColor, Activity activity) {
+    public static void setStatusBarColor(int statusColor, Activity activity) {
         activity.getWindow().setStatusBarColor(statusColor);
     }
 

@@ -237,14 +237,35 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="49dp"
                         android:gravity="center_vertical"
-                        android:text="详情及协议"
-                        android:textColor="#ff000000"
-                        android:textSize="14sp"
-                        binding:onClickCommand="@{viewModel.detailClickCommand}" />
+                        binding:onClickCommand="@{viewModel.detailClickCommand}">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="详情及协议"
+                            android:textColor="#ff000000"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="12dp"
+                            android:src="@mipmap/ic_arrow_right"
+                            android:visibility="@{viewModel.showRight}" />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="7dp"
+                            android:layout_marginStart="12dp"
+                            android:src="@mipmap/ic_arrow_down"
+                            android:visibility="@{viewModel.showDetail}" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -310,10 +331,17 @@
                             android:textColor="#ff808080"
                             android:textSize="14sp" />
 
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="6dp"
+                            android:src="@mipmap/ic_amazing" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.entity.rateDay}"
+                            android:text="@{viewModel.rateDay}"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
 
@@ -469,7 +497,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.money}"
+                            android:text="@{viewModel.loanDate}"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -491,7 +519,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.money}"
+                            android:text="@{viewModel.bankInfo}"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -513,7 +541,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.money}"
+                            android:text="微众银行、兴业银行"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -537,7 +565,8 @@
                             android:layout_height="wrap_content"
                             android:text="查看"
                             android:textColor="#ff6394ff"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            binding:onClickCommand="@{viewModel.showClickCommand}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -557,7 +586,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="个人日常消费"
+                            android:text="@{viewModel.entity.objective}"
                             android:textColor="#ff000000"
                             android:textSize="14sp" />
                     </LinearLayout>

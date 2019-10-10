@@ -7,12 +7,14 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.entity.Loan;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
+import com.goldze.mvvmhabit.ui.loan_agreement.AgreementFragment;
 import com.goldze.mvvmhabit.ui.loan_check.CheckFragment;
 import com.goldze.mvvmhabit.utils.StringUtil;
 
@@ -41,11 +43,14 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
     public ObservableInt month = new ObservableInt(5);
 
     public ObservableInt showDetail = new ObservableInt(View.GONE);
+    public ObservableInt showRight = new ObservableInt(View.VISIBLE);
 
     public ObservableField<String> repay = new ObservableField<>("");
 
     public ObservableField<Drawable> bankDrawable = new ObservableField<>();
     public ObservableField<String> bankInfo = new ObservableField<>("");
+
+    public ObservableField<String> rateDay = new ObservableField<>("");
 
     private List<BankCard> bankCards;
 
@@ -59,6 +64,8 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
 
     public ObservableField<String> repayDay = new ObservableField<>("");
 
+    public ObservableField<String> loanDate = new ObservableField<>("");
+
     public LInputViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
         entity.set(model.getLoan());
@@ -66,6 +73,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         setBank(0);
         if (entity.get().getRateDay() == 0.03)
             rate.set(View.VISIBLE);
+        rateDay.set(entity.get().getRateDay() + "%");
         repayFirst.set(StringUtil.getAfterMonth(entity.get().getDateStart(), 1));
         peopleNo.set(entity.get().getPeopleCardNo() + "*************");
         repayDay.set(String.format("每月%s日", StringUtil.getAfterMonthOnlyDay(entity.get().getDateStart(), 1)));
@@ -150,8 +158,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         btnDefault.set(View.GONE);
         setRepay();
         date.set(entity.get().getDateStart().replaceAll("-", "/") + " - " + StringUtil.getAfterMonthWithYear(entity.get().getDateStart(), month.get()));
-
-
+        loanDate.set(month.get() + "个月（期）");
     }
 
     public SingleLiveEvent<Integer> clickEvent = new SingleLiveEvent<>();
@@ -206,7 +213,13 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
     public BindingCommand detailClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            showDetail.set(showDetail.get() == View.VISIBLE ? View.GONE : View.VISIBLE);
+            if (showDetail.get() == View.GONE) {
+                showDetail.set(View.VISIBLE);
+                showRight.set(View.GONE);
+            } else {
+                showDetail.set(View.GONE);
+                showRight.set(View.VISIBLE);
+            }
         }
     });
 
@@ -214,6 +227,13 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         @Override
         public void call() {
             startContainerActivity(CheckFragment.class.getCanonicalName());
+        }
+    });
+
+    public BindingCommand showClickCommand = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            startContainerActivity(AgreementFragment.class.getCanonicalName());
         }
     });
 

@@ -1,6 +1,7 @@
 package com.goldze.mvvmhabit.ui.mine;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.goldze.mvvmhabit.BR;
@@ -9,9 +10,16 @@ import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.ActivityMineBinding;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
+import me.goldze.mvvmhabit.utils.StatusBarUtil;
 
 public class MineActivity extends BaseActivity<ActivityMineBinding, MineViewModel> {
-    //ActivityLoginBinding类是databinding框架自定生成的,对应activity_login.xml
+
+    @Override
+    public void initParam() {
+        super.initParam();
+        StatusBarUtil.setStatusBarColor(Color.WHITE, this);
+    }
+
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_mine;
