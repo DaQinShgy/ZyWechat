@@ -63,22 +63,48 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/tv_rmb"
-                    android:text="@{viewModel.balance}"
+                    android:text="@{viewModel.entity.quota}"
                     android:textColor="#ff000000"
                     android:textSize="46sp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18sp"
-                    android:text="总额度"
+                    android:text="@{viewModel.rateTotal}"
                     android:textColor="#ff808080"
                     android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:visibility="@{viewModel.rate}">
+
+                    <TextView
+                        android:id="@+id/tv_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="0.05%"
+                        android:textColor="#ffcccccc"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_alignStart="@+id/tv_5"
+                        android:layout_alignEnd="@+id/tv_5"
+                        android:layout_marginTop="10dp"
+                        android:background="#ffcccccc" />
+                </RelativeLayout>
+
             </LinearLayout>
 
             <TextView

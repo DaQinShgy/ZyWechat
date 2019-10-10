@@ -31,6 +31,9 @@ public class SetActivity extends BaseActivity<ActivitySetBinding, SetViewModel> 
 
     @Override
     public void initViewObservable() {
-
+        if (viewModel.entity.get().getRateDay() == 0.03)
+            binding.rb0.setChecked(true);
+        else
+            binding.rb1.setChecked(true);
     }
 }

@@ -2,10 +2,12 @@ package com.goldze.mvvmhabit.ui.loan_first;
 
 import android.app.Application;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
+import com.goldze.mvvmhabit.entity.Loan;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
 import com.goldze.mvvmhabit.ui.loan_input.LInputFragment;
 
@@ -14,7 +16,11 @@ import me.goldze.mvvmhabit.binding.command.BindingCommand;
 
 public class LoanViewModel extends ToolbarViewModel<DemoRepository> {
 
-    public ObservableField<String> balance = new ObservableField<>("");
+    public ObservableField<Loan> entity = new ObservableField<>();
+
+    public ObservableField<String> rateTotal = new ObservableField<>();
+
+    public ObservableInt rate = new ObservableInt(View.GONE);
 
     public LoanViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
@@ -23,7 +29,10 @@ public class LoanViewModel extends ToolbarViewModel<DemoRepository> {
     @Override
     public void onCreate() {
         super.onCreate();
-        balance.set(model.getBalance());
+        entity.set(model.getLoan());
+        if (entity.get().getRateDay() == 0.03)
+            rate.set(View.VISIBLE);
+        rateTotal.set(String.format("总额度%s，日利率%s", entity.get().getQuotaTotal(), entity.get().getRateDay() + "%"));
     }
 
     /**

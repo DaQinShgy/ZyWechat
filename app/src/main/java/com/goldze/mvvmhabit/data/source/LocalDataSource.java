@@ -1,6 +1,7 @@
 package com.goldze.mvvmhabit.data.source;
 
 import com.goldze.mvvmhabit.entity.BankCard;
+import com.goldze.mvvmhabit.entity.Loan;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public interface LocalDataSource {
 
     void saveDai(boolean dai);
 
+    void saveLoan(Loan loan);
+
     String getUserName();
 
     String getWxId();
@@ -32,4 +35,6 @@ public interface LocalDataSource {
     List<BankCard> getAllBankCard();
 
     boolean getDai();
+
+    Loan getLoan();
 }

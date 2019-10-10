@@ -7,6 +7,7 @@ import com.goldze.mvvmhabit.data.source.HttpDataSource;
 import com.goldze.mvvmhabit.data.source.LocalDataSource;
 import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.entity.DemoEntity;
+import com.goldze.mvvmhabit.entity.Loan;
 
 import java.util.List;
 
@@ -99,6 +100,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     }
 
     @Override
+    public void saveLoan(Loan loan) {
+        mLocalDataSource.saveLoan(loan);
+    }
+
+    @Override
     public String getUserName() {
         return mLocalDataSource.getUserName();
     }
@@ -126,6 +132,11 @@ public class DemoRepository extends BaseModel implements HttpDataSource, LocalDa
     @Override
     public boolean getDai() {
         return mLocalDataSource.getDai();
+    }
+
+    @Override
+    public Loan getLoan() {
+        return mLocalDataSource.getLoan() != null ? mLocalDataSource.getLoan() : new Loan();
     }
 
 }

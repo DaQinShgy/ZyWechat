@@ -14,6 +14,8 @@ public class BankCard extends LitePalSupport {
 
     private int drawable1;
 
+    private int drawable2;
+
     public BankCard() {
     }
 
@@ -59,5 +61,13 @@ public class BankCard extends LitePalSupport {
 
     public void setDrawable1(int drawable1) {
         this.drawable1 = drawable1;
+    }
+
+    public int getDrawable2() {
+        return drawable2;
+    }
+
+    public void setDrawable2(int drawable2) {
+        this.drawable2 = drawable2;
     }
 }

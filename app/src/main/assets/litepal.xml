@@ -2,10 +2,11 @@
 <litepal>
     <dbname value="WX" />
 
-    <version value="2" />
+    <version value="5" />
 
     <list>
         <mapping class="com.goldze.mvvmhabit.entity.BankCard" />
+        <mapping class="com.goldze.mvvmhabit.entity.Loan" />
     </list>
 
 </litepal>

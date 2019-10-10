@@ -19,6 +19,7 @@ import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentLinputBinding;
 import com.goldze.mvvmhabit.entity.BankCard;
 import com.goldze.mvvmhabit.ui.base.BaseDialog;
+import com.goldze.mvvmhabit.utils.StringUtil;
 
 import java.util.List;
 
@@ -106,18 +107,21 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
                             iv10.setVisibility(View.GONE);
                             iv20.setVisibility(View.GONE);
                             viewModel.month.set(5);
+                            viewModel.setRepay();
                             break;
                         case R.id.ll_10:
                             iv5.setVisibility(View.GONE);
                             iv10.setVisibility(View.VISIBLE);
                             iv20.setVisibility(View.GONE);
                             viewModel.month.set(10);
+                            viewModel.setRepay();
                             break;
                         case R.id.ll_20:
                             iv5.setVisibility(View.GONE);
                             iv10.setVisibility(View.GONE);
                             iv20.setVisibility(View.VISIBLE);
                             viewModel.month.set(20);
+                            viewModel.setRepay();
                             break;
                         default:
                             break;
@@ -143,8 +147,14 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
                 mBaseDialog.dismiss();
             }
         });
-        ((TextView) view.findViewById(R.id.tv_2)).setText("¥" + viewModel.money.get());
+        ((TextView) view.findViewById(R.id.tv_rate)).setText(viewModel.entity.get().getRateDay() + "%");
+        if (viewModel.entity.get().getRateDay() == 0.03)
+            view.findViewById(R.id.tv_rate_right).setVisibility(View.VISIBLE);
+        else
+            view.findViewById(R.id.tv_rate_right).setVisibility(View.GONE);
+        ((TextView) view.findViewById(R.id.tv_2)).setText("¥" + Integer.valueOf(viewModel.money.get()) / viewModel.month.get());
         ((TextView) view.findViewById(R.id.tv_3)).setText(String.format("借满%s个月总利息", viewModel.month.get()));
+        ((TextView) view.findViewById(R.id.tv_4)).setText(String.format("¥%.2f", Integer.valueOf(viewModel.money.get()) * viewModel.entity.get().getRateDay() * 0.01 * 30 * viewModel.month.get()));
         LinearLayout layout = view.findViewById(R.id.ll_month);
         for (int i = 0; i < viewModel.month.get(); i++) {
             View item = getLayoutInflater().inflate(R.layout.item_month, layout, false);
@@ -153,6 +163,10 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
             else if (i == viewModel.month.get() - 1)
                 item.findViewById(R.id.view_bottom).setVisibility(View.INVISIBLE);
             ((TextView) item.findViewById(R.id.tv_0)).setText(String.format("第%s期", i + 1));
+            ((TextView) item.findViewById(R.id.tv_1)).setText(StringUtil.getAfterMonthForDialog(viewModel.entity.get().getDateStart(), i + 1));
+            ((TextView) item.findViewById(R.id.tv_2)).setText(String.format("应还¥%.2f",
+                    Integer.valueOf(viewModel.money.get()) / viewModel.month.get() +
+                            Integer.valueOf(viewModel.money.get()) * viewModel.entity.get().getRateDay() * 0.01 * 30));
             layout.addView(item);
         }
         mBaseDialog.show(view);
@@ -169,7 +183,30 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
             }
         });
         List<BankCard> list = viewModel.getAllCard();
-
+        ((TextView) view.findViewById(R.id.tv_hint)).setText(String.format("每月%s日凌晨优先从该卡自动还款", StringUtil.getAfterMonthOnlyDay(viewModel.entity.get().getDateStart(), 1)));
+        final LinearLayout layout = view.findViewById(R.id.ll_card);
+        for (int i = 0; i < list.size(); i++) {
+            BankCard card = list.get(i);
+            final View item = getLayoutInflater().inflate(R.layout.item_dialog_card, layout, false);
+            ((ImageView) item.findViewById(R.id.iv)).setImageResource(card.getDrawable2());
+            ((TextView) item.findViewById(R.id.tv)).setText(card.getName() + " " + card.getType() + " (" +
+                    card.getNo().replace("****  ****  ****  ", "") + ")");
+            if (i == viewModel.getCardSelected())
+                item.findViewById(R.id.iv_right).setVisibility(View.VISIBLE);
+            else
+                item.findViewById(R.id.iv_right).setVisibility(View.GONE);
+            final int finalI = i;
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.setBank(finalI);
+                    mBaseDialog.dismiss();
+                }
+            });
+            layout.addView(item);
+        }
+        View item = getLayoutInflater().inflate(R.layout.item_dialog_card, layout, false);
+        layout.addView(item);
         mBaseDialog.show(view);
     }
 

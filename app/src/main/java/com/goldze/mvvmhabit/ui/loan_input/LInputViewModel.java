@@ -3,14 +3,18 @@ package com.goldze.mvvmhabit.ui.loan_input;
 import android.app.Application;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.BankCard;
+import com.goldze.mvvmhabit.entity.Loan;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
 import com.goldze.mvvmhabit.ui.loan_check.CheckFragment;
+import com.goldze.mvvmhabit.utils.StringUtil;
 
 import java.util.List;
 
@@ -20,6 +24,8 @@ import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
 
 public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
+
+    public ObservableField<Loan> entity = new ObservableField<>();
 
     public ObservableField<String> money = new ObservableField<>("");
 
@@ -36,8 +42,33 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
 
     public ObservableInt showDetail = new ObservableInt(View.GONE);
 
+    public ObservableField<String> repay = new ObservableField<>("");
+
+    public ObservableField<Drawable> bankDrawable = new ObservableField<>();
+    public ObservableField<String> bankInfo = new ObservableField<>("");
+
+    private List<BankCard> bankCards;
+
+    public ObservableInt rate = new ObservableInt(View.GONE);
+
+    public ObservableField<String> date = new ObservableField<>("");
+
+    public ObservableField<String> repayFirst = new ObservableField<>("");
+
+    public ObservableField<String> peopleNo = new ObservableField<>("");
+
+    public ObservableField<String> repayDay = new ObservableField<>("");
+
     public LInputViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
+        entity.set(model.getLoan());
+        bankCards = model.getAllBankCard();
+        setBank(0);
+        if (entity.get().getRateDay() == 0.03)
+            rate.set(View.VISIBLE);
+        repayFirst.set(StringUtil.getAfterMonth(entity.get().getDateStart(), 1));
+        peopleNo.set(entity.get().getPeopleCardNo() + "*************");
+        repayDay.set(String.format("每月%s日", StringUtil.getAfterMonthOnlyDay(entity.get().getDateStart(), 1)));
     }
 
     /**
@@ -117,6 +148,10 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         }
         content.set(View.VISIBLE);
         btnDefault.set(View.GONE);
+        setRepay();
+        date.set(entity.get().getDateStart().replaceAll("-", "/") + " - " + StringUtil.getAfterMonthWithYear(entity.get().getDateStart(), month.get()));
+
+
     }
 
     public SingleLiveEvent<Integer> clickEvent = new SingleLiveEvent<>();
@@ -135,6 +170,10 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         }
     });
 
+    public void setRepay() {
+        repay.set(String.format("首次%s  应还¥%.2f", StringUtil.getAfterMonth(entity.get().getDateStart(), 1),
+                Integer.valueOf(money.get()) / month.get() + Integer.valueOf(money.get()) * entity.get().getRateDay() * 0.01 * 30));
+    }
 
     public BindingCommand cardClickCommand = new BindingCommand(new BindingAction() {
         @Override
@@ -142,6 +181,23 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
             clickEvent.setValue(2);
         }
     });
+
+    private int mCardSelected = 0;
+
+    public int getCardSelected() {
+        return mCardSelected;
+    }
+
+    public void setBank(int position) {
+        if (bankCards.size() <= position) {
+            return;
+        }
+        this.mCardSelected = position;
+        BankCard bankCard = bankCards.get(position);
+        bankDrawable.set(ContextCompat.getDrawable(getApplication(), bankCard.getDrawable2()));
+        bankInfo.set(bankCard.getName() + " " + bankCard.getType() + " (" +
+                bankCard.getNo().replace("****  ****  ****  ", "") + ")");
+    }
 
     public List<BankCard> getAllCard() {
         return model.getAllBankCard();

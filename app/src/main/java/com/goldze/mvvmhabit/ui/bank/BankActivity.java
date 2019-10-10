@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.app.AppViewModelFactory;
 import com.goldze.mvvmhabit.databinding.FragmentBankBinding;
+import com.goldze.mvvmhabit.entity.BankCard;
+import com.goldze.mvvmhabit.view.AddCardDialog;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
@@ -51,7 +53,12 @@ public class BankActivity extends BaseActivity<FragmentBankBinding, BankViewMode
             public void onChanged(@Nullable Boolean aBoolean) {
                 //pSwitchObservable是boolean类型的观察者,所以可以直接使用它的值改变密码开关的图标
                 if (viewModel.addEvent.getValue()) {
-//                    addBank();
+                    new AddCardDialog(BankActivity.this, new AddCardDialog.DialogCallBack() {
+                        @Override
+                        public void onSuccess(BankCard bankCard) {
+                            viewModel.saveBankCard(bankCard);
+                        }
+                    }).show();
                 }
             }
         });

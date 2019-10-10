@@ -3,6 +3,7 @@ package com.goldze.mvvmhabit.data.source.local;
 import com.goldze.mvvmhabit.data.source.LocalDataSource;
 import com.goldze.mvvmhabit.data.source.http.service.DemoApiService;
 import com.goldze.mvvmhabit.entity.BankCard;
+import com.goldze.mvvmhabit.entity.Loan;
 
 import org.litepal.LitePal;
 
@@ -67,6 +68,11 @@ public class LocalDataSourceImpl implements LocalDataSource {
     }
 
     @Override
+    public void saveLoan(Loan loan) {
+        loan.save();
+    }
+
+    @Override
     public String getUserName() {
         return SPUtils.getInstance().getString("UserName");
     }
@@ -94,5 +100,10 @@ public class LocalDataSourceImpl implements LocalDataSource {
     @Override
     public boolean getDai() {
         return SPUtils.getInstance().getBoolean("dai", false);
+    }
+
+    @Override
+    public Loan getLoan() {
+        return LitePal.findFirst(Loan.class);
     }
 }

@@ -7,10 +7,11 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.databinding.FragmentCheckBinding;
-import com.goldze.mvvmhabit.databinding.FragmentLoanBinding;
+import com.goldze.mvvmhabit.ui.loan_code.CodeFragment;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 
@@ -52,9 +53,11 @@ public class CheckFragment extends BaseFragment<FragmentCheckBinding, CheckViewM
             public void afterTextChanged(Editable s) {
                 String result = s.toString().trim();
                 if (!TextUtils.isEmpty(result) && result.length() == 6) {
-
+                    startContainerActivity(CodeFragment.class.getCanonicalName());
                 }
             }
         });
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
 }

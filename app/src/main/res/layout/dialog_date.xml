@@ -38,11 +38,36 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.03%"
             android:textColor="#ff000000"
             android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/tv_rate_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp">
+
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="0.05%"
+                android:textColor="#ffcccccc"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_alignStart="@+id/tv_5"
+                android:layout_alignEnd="@+id/tv_5"
+                android:layout_marginTop="10dp"
+                android:background="#ffcccccc" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -84,6 +109,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¥15.27"
