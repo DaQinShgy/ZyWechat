@@ -190,7 +190,7 @@ public class LInputFragment extends BaseFragment<FragmentLinputBinding, LInputVi
             final View item = getLayoutInflater().inflate(R.layout.item_dialog_card, layout, false);
             ((ImageView) item.findViewById(R.id.iv)).setImageResource(card.getDrawable2());
             ((TextView) item.findViewById(R.id.tv)).setText(card.getName() + " " + card.getType() + " (" +
-                    card.getNo().replace("****  ****  ****  ", "") + ")");
+                    card.getNo() + ")");
             if (i == viewModel.getCardSelected())
                 item.findViewById(R.id.iv_right).setVisibility(View.VISIBLE);
             else

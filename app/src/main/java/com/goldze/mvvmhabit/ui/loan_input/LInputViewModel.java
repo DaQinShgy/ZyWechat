@@ -207,7 +207,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
         BankCard bankCard = bankCards.get(position);
         bankDrawable.set(ContextCompat.getDrawable(getApplication(), bankCard.getDrawable2()));
         bankInfo.set(bankCard.getName() + " " + bankCard.getType() + " (" +
-                bankCard.getNo().replace("****  ****  ****  ", "") + ")");
+                bankCard.getNo() + ")");
     }
 
     public List<BankCard> getAllCard() {

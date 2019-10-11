@@ -25,22 +25,8 @@ public class StatusBarUtil {
      * @param activity
      * @return 1:MIUUI 2:Flyme 3:android6.0
      */
-    public static int StatusBarLightMode(Activity activity) {
-        int result = 0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                result = 3;
-            } else if (MIUISetStatusBarLightMode(activity, true)) {
-                result = 1;
-            } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
-                result = 2;
-            } else {
-                activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                activity.getWindow().setStatusBarColor(calculateStatusColor(Color.WHITE, 112));
-            }
-        }
-        return result;
+    public static void StatusBarLightMode(Activity activity) {
+        activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     public static void setStatusBarColor(int statusColor, Activity activity) {

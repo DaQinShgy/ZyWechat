@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.goldze.mvvmhabit.R;
 import com.goldze.mvvmhabit.entity.BankCard;
@@ -58,7 +59,7 @@ public class AddCardDialog extends Dialog {
                 }
                 BankCard bankCard = new BankCard();
                 bankCard.setName(name);
-                bankCard.setNo("****  ****  ****  " + no);
+                bankCard.setNo(no);
                 bankCard.setType(((RadioButton) rg.findViewById(rg.getCheckedRadioButtonId())).getText().toString());
                 int resourceId0 = 0;
                 int resourceId1 = 0;
@@ -119,6 +120,9 @@ public class AddCardDialog extends Dialog {
                     resourceId0 = R.mipmap.ic_zx0;
                     resourceId1 = R.mipmap.ic_zx1;
                     resourceId2 = R.mipmap.ic_zx2;
+                } else {
+                    ToastUtils.showShort("没有兼容该银行");
+                    return;
                 }
                 bankCard.setDrawable0(resourceId0);
                 bankCard.setDrawable1(resourceId1);

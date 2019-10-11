@@ -15,12 +15,6 @@ import me.goldze.mvvmhabit.utils.StatusBarUtil;
 public class MineActivity extends BaseActivity<ActivityMineBinding, MineViewModel> {
 
     @Override
-    public void initParam() {
-        super.initParam();
-        StatusBarUtil.setStatusBarColor(Color.WHITE, this);
-    }
-
-    @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_mine;
     }
