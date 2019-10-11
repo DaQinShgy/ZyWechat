@@ -24,6 +24,14 @@ public class Loan extends LitePalSupport {
     //借款用途
     private String objective;
 
+    private boolean showChange;
+
+    private String changeRate;
+
+    private String changeQuota;
+
+    private String phone;
+
     public String getQuota() {
         return quota;
     }
@@ -86,5 +94,37 @@ public class Loan extends LitePalSupport {
 
     public void setQuotaTotal(String quotaTotal) {
         this.quotaTotal = quotaTotal;
+    }
+
+    public boolean isShowChange() {
+        return showChange;
+    }
+
+    public void setShowChange(boolean showChange) {
+        this.showChange = showChange;
+    }
+
+    public String getChangeRate() {
+        return changeRate;
+    }
+
+    public void setChangeRate(String changeRate) {
+        this.changeRate = changeRate;
+    }
+
+    public String getChangeQuota() {
+        return changeQuota;
+    }
+
+    public void setChangeQuota(String changeQuota) {
+        this.changeQuota = changeQuota;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

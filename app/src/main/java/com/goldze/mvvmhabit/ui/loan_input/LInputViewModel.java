@@ -108,7 +108,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 return;
             }
             int result = Integer.parseInt(money.get());
-            if (result < 500 || result > 40000) {
+            if (result < 500 || result > 40000 || result > Integer.valueOf(entity.get().getQuota())) {
                 dividerGray.set(View.INVISIBLE);
                 dividerYellow.set(View.INVISIBLE);
                 dividerRed.set(View.VISIBLE);
@@ -117,8 +117,10 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 btnDefault.set(View.VISIBLE);
                 if (result < 500)
                     textRed.set("单笔借钱金额最低¥500");
-                else
+                else if (result > 40000)
                     textRed.set("单笔借钱金额最高¥40000");
+                else
+                    textRed.set("当前最多可借¥" + entity.get().getQuota());
                 return;
             }
             dividerGray.set(View.INVISIBLE);
@@ -136,7 +138,7 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 return;
             }
             int result = Integer.parseInt(money.get());
-            if (result < 500 || result > 40000) {
+            if (result < 500 || result > 40000 || result > Integer.valueOf(entity.get().getQuota())) {
                 dividerGray.set(View.INVISIBLE);
                 dividerYellow.set(View.INVISIBLE);
                 dividerRed.set(View.VISIBLE);
@@ -145,8 +147,10 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
                 btnDefault.set(View.VISIBLE);
                 if (result < 500)
                     textRed.set("单笔借钱金额最低¥500");
-                else
+                else if (result > 40000)
                     textRed.set("单笔借钱金额最高¥40000");
+                else
+                    textRed.set("当前最多可借¥" + entity.get().getQuota());
                 return;
             }
             dividerGray.set(View.VISIBLE);

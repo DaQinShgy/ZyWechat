@@ -2,7 +2,7 @@
 <litepal>
     <dbname value="WX" />
 
-    <version value="5" />
+    <version value="6" />
 
     <list>
         <mapping class="com.goldze.mvvmhabit.entity.BankCard" />

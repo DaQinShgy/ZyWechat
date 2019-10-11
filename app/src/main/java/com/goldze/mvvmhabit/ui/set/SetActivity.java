@@ -2,6 +2,7 @@ package com.goldze.mvvmhabit.ui.set;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 
 import com.goldze.mvvmhabit.BR;
 import com.goldze.mvvmhabit.R;
@@ -35,5 +36,14 @@ public class SetActivity extends BaseActivity<ActivitySetBinding, SetViewModel> 
             binding.rb0.setChecked(true);
         else
             binding.rb1.setChecked(true);
+
+        if (viewModel.entity.get().isShowChange())
+            binding.cb.setChecked(true);
+        binding.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                viewModel.entity.get().setShowChange(isChecked);
+            }
+        });
     }
 }

@@ -73,7 +73,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15.5dp"
-            android:paddingEnd="14dp">
+            android:paddingEnd="14dp"
+            android:visibility="@{viewModel.showChange}">
 
             <ImageView
                 android:layout_width="20dp"
@@ -96,7 +97,7 @@
                 android:background="@drawable/shape_lqt"
                 android:gravity="center"
                 android:padding="3dp"
-                android:text="收益率2.37%"
+                android:text="@{viewModel.changeRate}"
                 android:textColor="#E1B069"
                 android:textSize="10sp" />
 
@@ -109,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="¥3.23"
+                android:text="@{viewModel.changeQuota}"
                 android:textColor="#ff000000"
                 android:textSize="16sp" />
 
@@ -122,7 +123,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@drawable/layer_divider" />
+            android:background="@drawable/layer_divider"
+            android:visibility="@{viewModel.showChange}" />
 
         <LinearLayout
             android:layout_width="match_parent"

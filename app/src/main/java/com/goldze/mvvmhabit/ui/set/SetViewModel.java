@@ -2,7 +2,9 @@ package com.goldze.mvvmhabit.ui.set;
 
 import android.app.Application;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
 import com.goldze.mvvmhabit.entity.Loan;

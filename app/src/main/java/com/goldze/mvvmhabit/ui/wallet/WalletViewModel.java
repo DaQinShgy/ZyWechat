@@ -2,10 +2,12 @@ package com.goldze.mvvmhabit.ui.wallet;
 
 import android.app.Application;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.goldze.mvvmhabit.data.DemoRepository;
+import com.goldze.mvvmhabit.entity.Loan;
 import com.goldze.mvvmhabit.ui.balance.BalanceFragment;
 import com.goldze.mvvmhabit.ui.bank.BankActivity;
 import com.goldze.mvvmhabit.ui.base.viewmodel.ToolbarViewModel;
@@ -17,6 +19,14 @@ public class WalletViewModel extends ToolbarViewModel<DemoRepository> {
 
     public ObservableField<String> balance = new ObservableField<>("");
 
+    public ObservableField<Loan> entity = new ObservableField<>();
+
+    public ObservableInt showChange = new ObservableInt(View.GONE);
+
+    public ObservableField<String> changeRate = new ObservableField<>("");
+
+    public ObservableField<String> changeQuota = new ObservableField<>("");
+
     public WalletViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
     }
@@ -25,6 +35,10 @@ public class WalletViewModel extends ToolbarViewModel<DemoRepository> {
     public void onCreate() {
         super.onCreate();
         balance.set("¥" + model.getBalance());
+        entity.set(model.getLoan());
+        showChange.set(entity.get().isShowChange() ? View.VISIBLE : View.GONE);
+        changeRate.set(String.format("收益率%s", entity.get().getChangeRate()) + "%");
+        changeQuota.set("¥" + entity.get().getChangeQuota());
     }
 
     /**
