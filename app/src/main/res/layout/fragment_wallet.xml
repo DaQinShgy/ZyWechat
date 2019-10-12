@@ -99,7 +99,8 @@
                 android:padding="3dp"
                 android:text="@{viewModel.changeRate}"
                 android:textColor="#E1B069"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:visibility="@{viewModel.showRate}" />
 
             <View
                 android:layout_width="0dp"
