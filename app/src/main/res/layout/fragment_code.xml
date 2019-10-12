@@ -65,14 +65,14 @@
                 android:inputType="number"
                 android:maxLength="6"
                 android:textColor="#ff000000"
-                android:textColorHint="#ff000000"
+                android:textColorHint="#ffccd2df"
                 android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.code}"
-                android:textColor="#ffccd2df"
+                android:textColor="#ff000000"
                 android:textSize="15sp"
                 binding:onClickCommand="@{viewModel.codeClickCommand}" />
         </LinearLayout>

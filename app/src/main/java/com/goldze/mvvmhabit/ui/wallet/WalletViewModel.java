@@ -27,6 +27,7 @@ public class WalletViewModel extends ToolbarViewModel<DemoRepository> {
     public ObservableInt showRate = new ObservableInt(View.GONE);
 
     public ObservableField<String> changeQuota = new ObservableField<>("");
+    public ObservableInt showQuota = new ObservableInt(View.GONE);
 
     public WalletViewModel(@NonNull Application application, DemoRepository repository) {
         super(application, repository);
@@ -42,6 +43,8 @@ public class WalletViewModel extends ToolbarViewModel<DemoRepository> {
         if (!"0".equals(entity.get().getChangeRate()))
             showRate.set(View.VISIBLE);
         changeQuota.set("¥" + entity.get().getChangeQuota());
+        if (!"0".equals(entity.get().getChangeQuota()))
+            showQuota.set(View.VISIBLE);
     }
 
     /**

@@ -26,11 +26,11 @@ public class StatusBarUtil {
      * @return 1:MIUUI 2:Flyme 3:android6.0
      */
     public static void StatusBarLightMode(Activity activity) {
-        activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        //activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
     public static void setStatusBarColor(int statusColor, Activity activity) {
-        activity.getWindow().setStatusBarColor(statusColor);
+        //activity.getWindow().setStatusBarColor(statusColor);
     }
 
     /**

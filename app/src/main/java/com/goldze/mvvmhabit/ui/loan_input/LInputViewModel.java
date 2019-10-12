@@ -184,6 +184,8 @@ public class LInputViewModel extends ToolbarViewModel<DemoRepository> {
     public void setRepay() {
         repay.set(String.format("首次%s  应还¥%.2f", StringUtil.getAfterMonth(entity.get().getDateStart(), 1),
                 Integer.valueOf(money.get()) / month.get() + Integer.valueOf(money.get()) * entity.get().getRateDay() * 0.01 * 30));
+        date.set(entity.get().getDateStart().replaceAll("-", "/") + " - " + StringUtil.getAfterMonthWithYear(entity.get().getDateStart(), month.get()));
+        loanDate.set(month.get() + "个月（期）");
     }
 
     public BindingCommand cardClickCommand = new BindingCommand(new BindingAction() {

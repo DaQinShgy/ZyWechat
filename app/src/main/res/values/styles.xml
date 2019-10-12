@@ -9,7 +9,7 @@
         <!--colorPrimary 对应ToolBar的颜色-->
         <item name="colorPrimary">@color/white</item>
         <!--colorPrimaryDark对应状态栏的颜色-->
-        <item name="colorPrimaryDark">#EDEDED</item>
+        <item name="colorPrimaryDark">#C5C5C5</item>
         <!--colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。-->
         <item name="colorAccent">#FFD143</item>
         <item name="android:windowBackground">@color/white</item>

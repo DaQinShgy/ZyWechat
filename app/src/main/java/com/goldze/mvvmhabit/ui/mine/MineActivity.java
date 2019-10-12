@@ -3,6 +3,7 @@ package com.goldze.mvvmhabit.ui.mine;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.goldze.mvvmhabit.BR;
 import com.goldze.mvvmhabit.R;
@@ -18,6 +19,7 @@ public class MineActivity extends BaseActivity<ActivityMineBinding, MineViewMode
     public void initParam() {
         super.initParam();
         setDark(false);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
     }
 
     @Override
@@ -37,8 +39,4 @@ public class MineActivity extends BaseActivity<ActivityMineBinding, MineViewMode
         return ViewModelProviders.of(this, factory).get(MineViewModel.class);
     }
 
-    @Override
-    public void initViewObservable() {
-
-    }
 }

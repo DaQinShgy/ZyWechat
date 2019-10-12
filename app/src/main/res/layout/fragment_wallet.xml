@@ -113,7 +113,8 @@
                 android:layout_marginEnd="10dp"
                 android:text="@{viewModel.changeQuota}"
                 android:textColor="#ff000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="@{viewModel.showQuota}" />
 
             <ImageView
                 android:layout_width="7dp"
